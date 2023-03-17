@@ -63,7 +63,7 @@
     height: 100px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url("../images/cup.png");
+    background-image: url("../images/coffee/coffee_cup.png");
   }
 }
 
@@ -91,28 +91,32 @@
     offset-path: path("m97.162,190.521c35.963-15.875,157.843-132.745,59.28-177.311-47.126-21.308-103.471,55.113-59.28,65.947,41.258-6.234-19.353-94.763-69.523-60.377-66.711,45.724,38.402,155.631,69.523,171.74");
   }
 
-  &_sakura01 {
-    background-image: url("../images/flower_sakura_01.png");
+  &_yellow {
+    background-image: url("../images/flower/flower_yellow.png");
   }
 
-  &_sakura02 {
-    background-image: url("../images/flower_sakura_02.png");
-  }
-
-  &_sakura03 {
-    background-image: url("../images/flower_sakura_03.png");
-  }
-
-  &_pink {
-    background-image: url("../images/flower_pink.png");
+  &_blue {
+    background-image: url("../images/flower/flower_blue.png");
   }
 
   &_plum {
-    background-image: url("../images/flower_plum.png");
+    background-image: url("../images/flower/flower_plum.png");
   }
 
   &_purple {
-    background-image: url("../images/flower_purple.png");
+    background-image: url("../images/flower/flower_purple.png");
+  }
+
+  &_sakura01 {
+    background-image: url("../images/flower/flower_sakura_01.png");
+  }
+
+  &_sakura02 {
+    background-image: url("../images/flower/flower_sakura_02.png");
+  }
+
+  &_sakura03 {
+    background-image: url("../images/flower/flower_sakura_03.png");
   }
 
   $total: 30;

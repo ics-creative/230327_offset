@@ -112,13 +112,13 @@ code {
   border-radius: 10px;
 }
 
-.wrapper__ferrisWheel {
+.wrapper__amusementPark {
   background-image: linear-gradient(var(--main-color) 0%, #1acdff 120%);
   height: 300px;
   overflow: hidden;
 }
 
-.wrapper__pancake, .wrapper__flower {
+.wrapper_pancake, .wrapper__flower {
   background-color: deepskyblue;
 }
 

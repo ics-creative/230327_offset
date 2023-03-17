@@ -29,6 +29,7 @@ const clickAndPlay = (buttonId, wrapperId, animDuration, shouldToggle) => {
   let timeoutID = null;
 
   button.addEventListener("click", (event) => {
+    // アニメーション中はクリックを受け付けない。
     if (isPlaying) {
       event.preventDefault();
       return;
