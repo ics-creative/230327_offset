@@ -96,13 +96,14 @@
 .coffee_cup {
   position: absolute;
   left: 50%;
-  translate: -50%;
   bottom: 10px;
+  display: block;
   width: 136px;
   height: 100px;
+  translate: -50%;
+  background-image: url("../images/coffee/coffee_cup.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../images/coffee/coffee_cup.png");
 }
 
 /* --------- お花 --------- */
@@ -124,8 +125,20 @@
   height: 40px;
   background-size: contain;
   background-repeat: no-repeat;
-  animation: bloom 2s infinite;
-  offset-path: path("m97.162,190.521c35.963-15.875,157.843-132.745,59.28-177.311-47.126-21.308-103.471,55.113-59.28,65.947,41.258-6.234-19.353-94.763-69.523-60.377-66.711,45.724,38.402,155.631,69.523,171.74");
+  animation: bloom 1.5s ease-out infinite;
+  offset-path: path("m98.754,196.422c31.104,0,152.054-138.577,69.462-184.493-44.918-24.971-84.351,18.188-84.351,53.101,0,27.57,30.877,28.712,30.692,0-.225-34.917-42.448-84.809-87.857-52.101-75.397,54.309,44.425,183.493,72.053,183.493");
+}
+.flower > span:nth-child(3n) {
+  width: 35px;
+  height: 35px;
+}
+.flower > span:nth-child(4n) {
+  width: 32px;
+  height: 32px;
+}
+.flower > span:nth-child(7n) {
+  width: 28px;
+  height: 28px;
 }
 .flower_yellow {
   background-image: url("../images/flower/flower_yellow.png");
@@ -272,13 +285,18 @@
 @keyframes bloom {
   0% {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0) rotate(-180deg);
   }
-  80% {
+  30% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1) rotate(20deg);
   }
   100% {
     opacity: 0;
+    transform: scale(0.5) rotate(180deg);
   }
 }/*# sourceMappingURL=style.css.map */

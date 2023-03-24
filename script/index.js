@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 const init = () => {
-  clickAndPlay("faces", "faces", 4000, false);
+  clickAndPlay("face", "face", 4000, false);
   clickAndPlay("letters", "letters", 5500, true);
 }
 

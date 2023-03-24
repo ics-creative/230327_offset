@@ -4,47 +4,137 @@
   }
 }
 
-/* --------- メンダコ --------- */
+/* ------------------ メンダコ ------------------ */
 .pancake {
   position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .pancake_image {
   position: absolute;
   top: calc(1rem + 8px); /* labelの高さ */
+  display: block;
+  width: 256px;
+  height: 144px;
+  translate: calc(-50% - 20px);
+  background-image: url("../images/pancake/pancake.GIF");
   pointer-events: none;
-  offset-path: path('m151.363,24.535c34.261,34.838-42.065,118.74,33.549,142.049,64.387,19.848,50.065-102.368,139.927-113.695,109.927-13.856,75.035,64.581,83.68,110.545,12.157,64.636,86.686,83.689,111.933,25.314,25.219-58.312-39.419-40.603-38.543-99.518.491-32.993-26.601-61.017-64.31-61.017-139.281,0-66.329,188.211-135.904,188.237-71.351.027-2.296-134.161-96.919-134.161-66.593,0-36.324,104.43-92.322,127.132-41.714,16.911-68.195-14.6-57.769-49.188,4.351-14.435,32.224-56.076,31.875-76.524-.944-55.405,52.701-82.118,84.803-59.173');
-  transform: rotate(90deg);
+  offset-path: path("m151.363,24.535c34.261,34.838-42.065,118.74,33.549,142.049,64.387,19.848,50.065-102.368,139.927-113.695,109.927-13.856,75.035,64.581,83.68,110.545,12.157,64.636,86.686,83.689,111.933,25.314,25.219-58.312-39.419-40.603-38.543-99.518.491-32.993-26.601-61.017-64.31-61.017-139.281,0-66.329,188.211-135.904,188.237-71.351.027-2.296-134.161-96.919-134.161-66.593,0-36.324,104.43-92.322,127.132-41.714,16.911-68.195-14.6-57.769-49.188,4.351-14.435,32.224-56.076,31.875-76.524-.944-55.405,52.701-82.118,84.803-59.173");
+  offset-rotate: auto 90deg;
   animation: move 40s linear infinite;
 }
 
-/* --------- 遊園地：観覧車 --------- */
+/* パスの表示/非表示を切り替えるパネル */
+.pancake_panel{
+  width: 100%;
+}
+
+.pancake_panel_path {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  visibility: hidden;
+}
+
+.pancake_panel_path::after {
+  content: "";
+  display: block;
+  width: 560px;
+  height: 240px;
+  background-image: url("../images/pancake/pancake_path.svg");
+}
+
+#path-pancake:checked ~ .pancake_panel_path {
+  visibility: visible;
+}
+
+/* ------------------ 顔 ------------------ */
+.wrapper__face {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-family: "Noto Color Emoji", sans-serif;
+}
+
+.face_imageWrapper, .face_panel_path {
+  position: absolute;
+  top: calc(1rem + 8px); /* labelの高さ */
+  left: 50%;
+  width: 500px;
+  translate: -50%;
+}
+
+.face_image {
+  font-size: 80px;
+  display: block;
+  position: absolute;
+  offset-path: path("m7.579,48.28c114.35,54.268,524.564-71.845,476.339,81.622-25.183,80.141-151.478,126.903-87.591,1.288,27.652-54.369-108.662-76.021-177.524-62.242-118.179,23.646-149.776,95.926-90.369,99.401,54.753,3.203,102.829-66.887,158.232-55.114,58.5,12.432-73.273,126.765-174.188,126.765-208.804,0-66.532-203.626,69.395-223.697C292.706-.062,368.352,35.795,376.468,80.905c12.045,66.953-14.822,119.602-30.653,169.095");
+  offset-rotate: 0deg;
+  opacity: calc(1 - 0.2 * var(--index));
+}
+
+[data-wrapper-id="face"].is-active .face_image {
+  animation: move-face 4s ease-out calc(0.1s * var(--index)), disappear-face 4s linear calc(0.1s * var(--index));
+}
+
+@keyframes move-face {
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+    offset-distance: 100%;
+  }
+}
+
+@keyframes disappear-face {
+  85% {
+    opacity: calc(1 - 0.2 * var(--index));
+  }
+
+  95% {
+    opacity: 0;
+  }
+}
+
+.face_box {
+  position: absolute;
+  display: block;
+  font-size: 90px;
+  bottom: -15px;
+  left: calc(50% + 40px);
+}
+
+/* パスの表示/非表示を切り替えるパネル */
+.face_panel {
+  position: relative;
+  width: 100%;
+}
+
+.face_panel_path {
+  visibility: hidden;
+}
+
+.face_panel_path::after {
+  content: "";
+  display: block;
+  width: 500px;
+  height: 250px;
+  background-image: url("../images/face/face_path.svg");
+}
+
+#path-face:checked ~ .face_panel_path {
+  visibility: visible;
+}
+
+/* ------------------ 遊園地：観覧車 ------------------ */
 .ferrisWheel {
   position: relative;
   width: 200px;
   margin: 50px auto 0;
-}
-
-.ferrisWheel_wheel, .ferrisWheel_frame {
-  position: absolute;
-  user-select: none;
-  pointer-events: none;
-}
-
-.ferrisWheel_wheel {
-  width: 200px;
-  height: 200px;
-  transform-origin: center center;
-  animation: rotate-wheel 40s linear infinite;
-}
-
-@keyframes rotate-wheel {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 .ferrisWheel_gondola {
@@ -53,7 +143,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  offset: path('M100,0 A100,100 0 1,1 100,200 A100,100 0 1,1 100,0 Z') 0deg;
+  offset: path("M100,0 A100,100 0 1,1 100,200 A100,100 0 1,1 100,0 Z") 0deg;
   animation: rotate-gondola 40s linear infinite;
   fill: hsl(calc(15deg + var(--index) * 36deg), 100%, 80%); /* インデックスに応じて色相をずらし、レインボーにする */
   margin-top: 20px; /* offset-anchorプロパティが全ブラウザでは対応していないので、余白で位置を調整 */
@@ -74,16 +164,14 @@
   transform-origin: top center;
 }
 
-/* ホバー可能なデバイスでのみ適用される */
+/* ホバー可能なデバイスでのみ適用 */
 @media (any-hover: hover) {
-  /*.wrapper__amusementPark {*/
-  /*  cursor: url("../images/arrow.png"), pointer;*/
-  /*}*/
   .ferrisWheel_gondola:hover .gondola {
     animation: swing-gondola 0.8s ease-out;
   }
 }
 
+/* この作例に限りスマホでも動作させたいので、HTMLにontouchstartを追加し、CSSでactiveクラスを指定しています */
 @media (any-hover: none) {
   .ferrisWheel_gondola:active .gondola {
     animation: swing-gondola 0.8s ease-out;
@@ -114,115 +202,84 @@
   }
 }
 
+
+.ferrisWheel_wheel, .ferrisWheel_frame {
+  position: absolute;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.ferrisWheel_wheel {
+  width: 200px;
+  height: 200px;
+  background-image: url("../images/amusementPark/ferriswheel_wheel.svg");
+  transform-origin: center;
+  animation: rotate-wheel 40s linear infinite;
+}
+
+@keyframes rotate-wheel {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ferrisWheel_frame{
+  width: 200px;
+  height: 250px;
+  background-image: url("../images/amusementPark/ferriswheel_frame.svg");
+}
+
 /* --------- 遊園地：ジェットコースター --------- */
 .rollerCoaster {
   position: relative;
-  bottom: -50px;
   pointer-events: none;
 }
 
 .rollerCoaster_vehicle {
   position: absolute;
-  left: -45px;
-  top: 8px;
+  left: -32px;
   display: block;
   width: 16px;
   height: 8px;
   background-color: #1479b7;
   border-radius: 2px;
-  offset: path("m1.1,159.404C51.078,125.098,72.148,28.003,130.927,3.895c74.737-30.654,12.765,192.036,73.176,201.703,54.687,8.752,52.938-108.955,107.888-108.955,25.33,0,37.282,45.228,41.654,61.203,11.955,43.681,53.533,62.594,70.809,67.201,38.784,10.343,86.556,3.089,110.729-7.33,35.363-15.243,63.503-40.146,79.262-75.603,8.182-18.411,26.211-109.259-43.573-110.207-55.809-.759-59.467,65.699-46.663,98.623,35.934,92.403,261.482,68.427,261.482,68.427V65.27c-96.839-8.862-77.947,90.059-151.913,99.988-33.832,4.542-38.332-88.797-72.349-85.956-32.307,2.698-28.693,115.875-76.594,107.352-18.437-3.281-22.211-82.61-53.312-78.717-46.101,5.771-54.488,95.861-87.581,97.008-99.629,3.453-73.23-152.266-131.477-150.831-41.25,1.016-77.197,61.297-94.478,93.786C76.74,225.447,29.461,222.761.071,224.84");
+  offset-path: path("m2.63,209.053C52.632,174.606,73.712,77.114,132.52,52.907c74.773-30.779,12.771,192.822,73.211,202.529,54.714,8.787,52.963-109.401,107.94-109.401,25.342,0,37.3,45.413,41.674,61.454,11.961,43.86,53.559,62.85,70.843,67.476,38.803,10.386,86.598,3.102,110.783-7.36,35.38-15.305,63.534-40.31,79.3-75.913,8.186-18.486,26.224-109.706-43.594-110.659-55.836-.762-59.496,65.968-46.686,99.027,35.952,92.781,261.608,68.707,261.608,68.707V114.533c-96.886-8.899-77.985,90.427-151.986,100.397-33.848,4.56-38.351-89.16-72.384-86.308-32.323,2.709-28.707,116.35-76.631,107.791-18.446-3.294-22.221-82.948-53.338-79.039-46.123,5.794-54.515,96.254-87.623,97.405-99.677,3.467-73.265-152.889-131.541-151.449-41.27,1.02-77.234,61.548-94.523,94.17C78.307,275.366,31.004,272.669,1.6,274.757");
   animation: move 14s infinite linear;
   animation-delay: calc(0.1s * var(--index));
 }
 
 .rollerCoaster_rail {
   position: absolute;
-  left: -67px;
-  top: 11px;
-}
-
-/* --------- 顔 --------- */
-.wrapper__face {
-  position: relative;
-}
-
-.face {
+  top: 1px;
+  left: 50%;
   display: block;
-  position: absolute;
-  left: 200px;
-  width: 80px;
-  height: 80px;
-  background-image: url("../images/face/face.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  offset: path('m.5,40.5c46,62,267-12,325,43,38.5,36.5,14.5,111.4-16,119-44,11,17-103-84-119-48.6-7.7-133-1-153,59s21.4,61.6,45,57c56-11,26.9-81,94-81s47.5,36.9,30,72c-15,30-53.4,42.2-92.5,43.5-38.9,1.3-94.1,3.1-120-34C-.2,158.3,26.8,96.8,66.5,62.5c19.9-17.2,46.7-44,120-51,116-11,144.6,9.5,173,40,41,44,39,107-12,199') 0deg;
-  opacity: calc(1 - 0.2 * var(--index));
+  width: 790px;
+  height: 300px;
+  translate: -50%;
+  background-image: url("../images/amusementPark/rail.svg");
 }
 
-[data-wrapper-id="faces"].is-active .face {
-  animation: move-face 4s ease-out calc(0.1s * var(--index));
-}
-
-@keyframes move-face {
-  70% {
-    transform: scale(1);
-  }
-
-  85% {
-    opacity: calc(1 - 0.2 * var(--index));
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(0);
-    offset-distance: 100%;
-  }
-}
-
-/* --------- おばけ --------- */
+/* ------------------ おばけ ------------------ */
 .ghost {
   position: relative;
   display: flex;
   justify-content: center;
 }
 
-.ghost_panel {
-  position: absolute;
-  width: 100%;
-  height: calc(260px + 1rem + 8px); /* pathの高さ:260px + labelの高さ */
-}
-
-.ghost_panel_path {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  visibility: hidden;
-}
-
-#sample_ghost_path:checked ~ .ghost_panel_path {
-  visibility: visible;
-}
-
-.ghost_panel_path > img {
-  display: block;
-}
-
-.ghost_panel_label {
-  color: white;
-}
-
 .ghost_image {
   position: absolute;
   top: calc(1rem + 8px); /* labelの高さ */
   left: calc(50% - 270px);
+  display: block;
   cursor: pointer;
-  offset: path('m241.751,142.925c43.31-20.713,56.006-62.201,100.549-86.711,44.272-24.361,156.608-41.807,178.889-33.531,58.392,21.69-37.254,58.35-43.212,60.362-44.593,15.06-166.413,5.261-262.904-14.993-40.339-8.468-145.335-63.352-179.788-15.503-30.698,42.634,28.139,84.58,101.046,64.34,86.311-23.961,163.652-4.758,251.582,10.994,48.604,8.707,166.749,19.277,112.151,47.34-36.778,18.904-131.732,7.721-198.408,1.747C180.349,166.1-8.912,291.142.864,201.323c6.569-60.352,175.83-23.933,240.887-58.398');
+  offset-path: path("m241.751,142.925c43.31-20.713,56.006-62.201,100.549-86.711,44.272-24.361,156.608-41.807,178.889-33.531,58.392,21.69-37.254,58.35-43.212,60.362-44.593,15.06-166.413,5.261-262.904-14.993-40.339-8.468-145.335-63.352-179.788-15.503-30.698,42.634,28.139,84.58,101.046,64.34,86.311-23.961,163.652-4.758,251.582,10.994,48.604,8.707,166.749,19.277,112.151,47.34-36.778,18.904-131.732,7.721-198.408,1.747C180.349,166.1-8.912,291.142.864,201.323c6.569-60.352,175.83-23.933,240.887-58.398");
   offset-rotate: 0deg;
-  animation-play-state: running;
   animation: move 40s linear infinite, ghost-direction 40s linear infinite;
+  animation-play-state: running;
 }
 
-/* offset-distanceを動かして、パス上では何％になるのか位置を確認し、キーフレームを打つ */
+/* パスの左右両端の位置で、フリップして向きを変える。offset-distanceを動かして、パス上では何％が両端になるのか確認し、キーフレームを打つ */
 @keyframes ghost-direction {
   15% {
     transform: scaleX(1);
@@ -250,6 +307,7 @@
   }
 }
 
+/* ふわふわ浮遊する動き */
 @keyframes floating {
   from {
     transform: translateY(10%);
@@ -259,6 +317,7 @@
   }
 }
 
+/* ブルブル震える動き */
 @keyframes shaking {
   0% {
     transform: translateX(-4%);
@@ -305,7 +364,40 @@
   animation: shaking 0.1s linear infinite;
 }
 
-/* --------- 文字書いている風 --------- */
+/* パスの表示/非表示を切り替えるパネル */
+.ghost_panel {
+  position: absolute;
+  width: 100%;
+  height: calc(260px + 1rem + 8px); /* パス画像の高さ:260px + labelの高さ */
+}
+
+.ghost_panel_path {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  visibility: hidden;
+}
+
+.ghost_panel_path::after{
+  content: "";
+  width: 540px;
+  height: 260px;
+  background-image: url("../images/ghost/ghost_path.svg");
+}
+
+#path-ghost:checked ~ .ghost_panel_path {
+  visibility: visible;
+}
+
+.ghost_panel_path > img {
+  display: block;
+}
+
+.ghost_panel_label {
+  color: white;
+}
+
+/* ------------------ 文字書いている風 ------------------ */
 .wrapper__letters {
   display: flex;
   justify-content: center;
@@ -320,9 +412,14 @@
 
 .letters_pen {
   position: absolute;
+  display: block;
+  width: 140px;
+  height: 140px;
+  background-image: url("../images/letters/letters_pen.png");
+  background-size: contain;
   translate: 50% -50%; /* ペン先を文字に合わせる */
   pointer-events: none;
-  offset: path('m2.348,80.572s13.419,12.98,21.14,11.079c11.174-2.751,31.536-24.701,38.025-25.239,6.389-.53-21.385,25.693-24.459,29.718-5.413,7.09-11.605,25.283-4.55,31.493,7.863,6.923,13.393-.655,24.769-25.374,5.379-11.687-4.068,10.878-3.945,16.587.122,5.676,1.673,14.786,13.121,13.366,13.775-1.709,27.472-54.096,41.337-72.768C119.974,43.023,148.869,1.639,164.589,3.026c13.958,1.232,3.197,23.508,1.539,26.479-3.816,6.839-18.976,43.678-49.781,50.618-21.331,4.806-24.626,32.136-24.711,33.652-.236,4.194,10.144,9.91,24.458-1.367,7.269-5.726-15.819-2.254-28.611,11.33-5.506,5.846,2.166,14.859,22.055,6.01,8.209-3.652,10.733-19.208,20.994-35.927,16.136-26.291,41.535-63.148,44.543-63.683,2.451-.436-2.686,4.953-7.278,13.516-14.464,26.973-50.589,84.537-49.449,86.245,1.501,2.251,23.012-35.269,32.267-35.269s14.804,15.181,7.831,19.498c-.859.531.69-4.121-3.254-5.512-4.446-1.568-14.315,3.266-17.997,9.563-4.582,7.836,1.063,19.99,15.483,10.283,16.427-11.057,18.603-27.489,25.571-28.322,4.712-.563,6.287,6.287,6.287,6.287,0,0-6.17.676-11.059,5.378-7.294,7.016-14.107,18.556-6.59,19.339,10.68,1.112,26.25-15.425,19.163-24.49-3.502-4.48,19.11.016,19.11.016,0,0-15.172,22.934-13.202,21.95,7.36-3.68,22.652-16.087,27.364-18.532,3.843-1.994-8.655,18.608-8.655,18.608,0,0,24.492-19.558,28.995-18.558,2.483.552-7.782,13.937-17.175,36.307-7.761,18.484-17.071,46.77-18.527,55.455-4.023,23.99-1.911,60.906,17.765,61.991,15.992.882,21.799-8.424,33.696-21.683,16.131-17.979-26.993-113.133-15.873-120.355,4.078-2.648,22.063-3.576,25.628-8.464,5.299-7.265-7.086-6.176-13.13-3.134-8.208,4.131-16.046,20.071-1.059,20.888,13.104.714,43.015-28.192,43.015-28.192');
+  offset-path: path("m2.348,80.572s13.419,12.98,21.14,11.079c11.174-2.751,31.536-24.701,38.025-25.239,6.389-.53-21.385,25.693-24.459,29.718-5.413,7.09-11.605,25.283-4.55,31.493,7.863,6.923,13.393-.655,24.769-25.374,5.379-11.687-4.068,10.878-3.945,16.587.122,5.676,1.673,14.786,13.121,13.366,13.775-1.709,27.472-54.096,41.337-72.768C119.974,43.023,148.869,1.639,164.589,3.026c13.958,1.232,3.197,23.508,1.539,26.479-3.816,6.839-18.976,43.678-49.781,50.618-21.331,4.806-24.626,32.136-24.711,33.652-.236,4.194,10.144,9.91,24.458-1.367,7.269-5.726-15.819-2.254-28.611,11.33-5.506,5.846,2.166,14.859,22.055,6.01,8.209-3.652,10.733-19.208,20.994-35.927,16.136-26.291,41.535-63.148,44.543-63.683,2.451-.436-2.686,4.953-7.278,13.516-14.464,26.973-50.589,84.537-49.449,86.245,1.501,2.251,23.012-35.269,32.267-35.269s14.804,15.181,7.831,19.498c-.859.531.69-4.121-3.254-5.512-4.446-1.568-14.315,3.266-17.997,9.563-4.582,7.836,1.063,19.99,15.483,10.283,16.427-11.057,18.603-27.489,25.571-28.322,4.712-.563,6.287,6.287,6.287,6.287,0,0-6.17.676-11.059,5.378-7.294,7.016-14.107,18.556-6.59,19.339,10.68,1.112,26.25-15.425,19.163-24.49-3.502-4.48,19.11.016,19.11.016,0,0-15.172,22.934-13.202,21.95,7.36-3.68,22.652-16.087,27.364-18.532,3.843-1.994-8.655,18.608-8.655,18.608,0,0,24.492-19.558,28.995-18.558,2.483.552-7.782,13.937-17.175,36.307-7.761,18.484-17.071,46.77-18.527,55.455-4.023,23.99-1.911,60.906,17.765,61.991,15.992.882,21.799-8.424,33.696-21.683,16.131-17.979-26.993-113.133-15.873-120.355,4.078-2.648,22.063-3.576,25.628-8.464,5.299-7.265-7.086-6.176-13.13-3.134-8.208,4.131-16.046,20.071-1.059,20.888,13.104.714,43.015-28.192,43.015-28.192");
   offset-rotate: 0deg;
 }
 
@@ -351,5 +448,5 @@
 
 [data-wrapper-id="letters"].is-active #letters-svg-mask {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 5.4s var(--custom-easing);
+  transition: stroke-dashoffset 5.5s var(--custom-easing);
 }
