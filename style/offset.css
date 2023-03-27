@@ -27,7 +27,7 @@
 }
 
 /* パスの表示/非表示を切り替えるパネル */
-.pancake_panel{
+.pancake_panel {
   width: 100%;
 }
 
@@ -51,30 +51,38 @@
 }
 
 /* ------------------ 遊園地：観覧車 ------------------ */
-.ferrisWheel {
+.wrapper__amusementPark {
   position: relative;
+}
+
+.ferrisWheel {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
   width: 200px;
-  margin: 50px auto 0;
+  height: 250px;
+  translate: -50%;
 }
 
 .ferrisWheel_gondola {
-  user-select: none;
-  cursor: pointer;
   position: absolute;
   width: 40px;
   height: 40px;
-  offset: path("M100,0 A100,100 0 1,1 100,200 A100,100 0 1,1 100,0 Z") 0deg;
-  animation: rotate-gondola 40s linear infinite;
-  fill: hsl(calc(15deg + var(--index) * 36deg), 100%, 80%); /* インデックスに応じて色相をずらし、レインボーにする */
   margin-top: 20px; /* offset-anchorプロパティが全ブラウザでは対応していないので、余白で位置を調整 */
+  fill: hsl(calc(15deg + var(--index) * 36deg), 100%, 80%); /* CSS変数(--index)の値に応じて色相をずらし、レインボーにする */
+  cursor: pointer;
+  offset-path: path("M100,0 A100,100 0 1,1 100,200 A100,100 0 1,1 100,0 Z");
+  offset-rotate: 0deg;
+  animation: rotate-gondola 40s linear infinite;
 }
 
+/* 観覧車が回転するアニメーション */
 @keyframes rotate-gondola {
   from {
-    offset-distance: calc(10% * var(--index));
+    offset-distance: calc(10% * var(--index)); /* 0% 10% 20% ... 90% */
   }
   to {
-    offset-distance: calc(100% + 10% * var(--index));
+    offset-distance: calc(100% + 10% * var(--index)); /* 100% 110% 120% ... 190% */
   }
 }
 
@@ -91,13 +99,14 @@
   }
 }
 
-/* この作例に限りスマホでも動作させたいので、HTMLにontouchstartを追加し、CSSでactiveクラスを指定しています */
+/* スマホでも動作させたいので、HTMLにontouchstartを追加し、CSSでactiveクラスを指定しています */
 @media (any-hover: none) {
   .ferrisWheel_gondola:active .gondola {
     animation: swing-gondola 0.8s ease-out;
   }
 }
 
+/* ゴンドラが揺れるアニメーション */
 @keyframes swing-gondola {
   0% {
     transform: rotate(0deg);
@@ -122,7 +131,6 @@
   }
 }
 
-
 .ferrisWheel_wheel, .ferrisWheel_frame {
   position: absolute;
   display: block;
@@ -144,7 +152,7 @@
   }
 }
 
-.ferrisWheel_frame{
+.ferrisWheel_frame {
   width: 200px;
   height: 250px;
   background-image: url("../images/amusementPark/ferriswheel_frame.svg");
@@ -152,13 +160,19 @@
 
 /* --------- 遊園地：ジェットコースター --------- */
 .rollerCoaster {
-  position: relative;
   pointer-events: none;
 }
 
 .rollerCoaster_vehicle {
+  position: relative;
+  left: 50%;
+  width: 790px;
+  height: 300px;
+  translate: -50%;
+}
+
+.rollerCoaster_vehicle_item {
   position: absolute;
-  left: -32px;
   display: block;
   width: 16px;
   height: 8px;
@@ -173,10 +187,10 @@
   position: absolute;
   top: 1px;
   left: 50%;
+  translate: -50%;
   display: block;
   width: 790px;
   height: 300px;
-  translate: -50%;
   background-image: url("../images/amusementPark/rail.svg");
 }
 
@@ -197,7 +211,7 @@
 }
 
 .face_image {
-  font-size: 80px;
+  font-size: 70px;
   display: block;
   position: absolute;
   offset-path: path("m7.579,48.28c114.35,54.268,524.564-71.845,476.339,81.622-25.183,80.141-151.478,126.903-87.591,1.288,27.652-54.369-108.662-76.021-177.524-62.242-118.179,23.646-149.776,95.926-90.369,99.401,54.753,3.203,102.829-66.887,158.232-55.114,58.5,12.432-73.273,126.765-174.188,126.765-208.804,0-66.532-203.626,69.395-223.697C292.706-.062,368.352,35.795,376.468,80.905c12.045,66.953-14.822,119.602-30.653,169.095");
@@ -246,9 +260,6 @@
 
 .face_panel_path {
   visibility: hidden;
-}
-
-.face_panel_path::after {
   content: "";
   display: block;
   width: 500px;
@@ -275,12 +286,21 @@
   cursor: pointer;
   offset-path: path("m241.751,142.925c43.31-20.713,56.006-62.201,100.549-86.711,44.272-24.361,156.608-41.807,178.889-33.531,58.392,21.69-37.254,58.35-43.212,60.362-44.593,15.06-166.413,5.261-262.904-14.993-40.339-8.468-145.335-63.352-179.788-15.503-30.698,42.634,28.139,84.58,101.046,64.34,86.311-23.961,163.652-4.758,251.582,10.994,48.604,8.707,166.749,19.277,112.151,47.34-36.778,18.904-131.732,7.721-198.408,1.747C180.349,166.1-8.912,291.142.864,201.323c6.569-60.352,175.83-23.933,240.887-58.398");
   offset-rotate: 0deg;
-  animation: move 40s linear infinite, ghost-direction 40s linear infinite;
-  animation-play-state: running;
+  /*animation: move 40s linear infinite, flip-ghost 40s linear infinite;*/
+  /*animation-play-state: running;*/
+
+  offset-distance: 41%;
+}
+
+@media (max-width: 760px) {
+  .ghost_image {
+    left: calc(50% - 185px);
+    offset-path: path("m165.731,142.925c29.663-20.713,38.358-62.201,68.865-86.711,30.322-24.361,107.26-41.807,122.52-33.531,39.992,21.69-25.515,58.35-29.595,60.362-30.541,15.06-113.975,5.261-180.061-14.993-27.628-8.468-99.539-63.352-123.135-15.503-21.025,42.634,19.273,84.58,69.206,64.34,59.114-23.961,112.084-4.758,172.307,10.994,33.289,8.707,114.205,19.277,76.811,47.34-25.189,18.904-90.223,7.721-135.888,1.747C123.677,166.1-5.946,291.142.749,201.323c4.499-60.352,120.425-23.933,164.982-58.398");
+  }
 }
 
 /* パスの左右両端の位置で、フリップして向きを変える。offset-distanceを動かして、パス上では何％が両端になるのか確認し、キーフレームを打つ */
-@keyframes ghost-direction {
+@keyframes flip-ghost {
   15% {
     transform: scaleX(1);
   }
@@ -343,7 +363,7 @@
 .ghost_image::before {
   opacity: 1;
   background-image: url("../images/ghost/ghost_fluid.png");
-  animation: floating 1s ease-out infinite alternate;
+  /*animation: floating 1s ease-out infinite alternate;*/
 }
 
 .ghost_image::after {
@@ -351,17 +371,36 @@
   background-image: url("../images/ghost/ghost_rigid.png");
 }
 
-.ghost_image:hover {
-  animation-play-state: paused;
+/* ホバー可能なデバイスでのみ適用 */
+@media (any-hover: hover) {
+  .ghost_image:hover {
+    animation-play-state: paused;
+  }
+
+  .ghost_image:hover.ghost_image::before {
+    opacity: 0;
+  }
+
+  .ghost_image:hover.ghost_image::after {
+    opacity: 1;
+    animation: shaking 0.1s linear infinite;
+  }
 }
 
-.ghost_image:hover.ghost_image::before {
-  opacity: 0;
-}
+/* スマホでも動作させたいので、HTMLにontouchstartを追加し、CSSでactiveクラスを指定しています */
+@media (any-hover: none) {
+  .ghost_image:active {
+    animation-play-state: paused;
+  }
 
-.ghost_image:hover.ghost_image::after {
-  opacity: 1;
-  animation: shaking 0.1s linear infinite;
+  .ghost_image:active.ghost_image::before {
+    opacity: 0;
+  }
+
+  .ghost_image:active.ghost_image::after {
+    opacity: 1;
+    animation: shaking 0.1s linear infinite;
+  }
 }
 
 /* パスの表示/非表示を切り替えるパネル */
@@ -378,11 +417,18 @@
   visibility: hidden;
 }
 
-.ghost_panel_path::after{
+.ghost_panel_path::after {
   content: "";
   width: 540px;
   height: 260px;
   background-image: url("../images/ghost/ghost_path.svg");
+}
+
+@media (max-width: 760px) {
+  .ghost_panel_path::after {
+    width: 370px;
+    background-image: url("../images/ghost/ghost_path_sp.svg");
+  }
 }
 
 #path-ghost:checked ~ .ghost_panel_path {
@@ -419,6 +465,8 @@
   background-size: contain;
   translate: 50% -50%; /* ペン先を文字に合わせる */
   pointer-events: none;
+
+  /* 🌟SVGの<mask>に指定するパスと同じ値です🌟 */
   offset-path: path("m2.348,80.572s13.419,12.98,21.14,11.079c11.174-2.751,31.536-24.701,38.025-25.239,6.389-.53-21.385,25.693-24.459,29.718-5.413,7.09-11.605,25.283-4.55,31.493,7.863,6.923,13.393-.655,24.769-25.374,5.379-11.687-4.068,10.878-3.945,16.587.122,5.676,1.673,14.786,13.121,13.366,13.775-1.709,27.472-54.096,41.337-72.768C119.974,43.023,148.869,1.639,164.589,3.026c13.958,1.232,3.197,23.508,1.539,26.479-3.816,6.839-18.976,43.678-49.781,50.618-21.331,4.806-24.626,32.136-24.711,33.652-.236,4.194,10.144,9.91,24.458-1.367,7.269-5.726-15.819-2.254-28.611,11.33-5.506,5.846,2.166,14.859,22.055,6.01,8.209-3.652,10.733-19.208,20.994-35.927,16.136-26.291,41.535-63.148,44.543-63.683,2.451-.436-2.686,4.953-7.278,13.516-14.464,26.973-50.589,84.537-49.449,86.245,1.501,2.251,23.012-35.269,32.267-35.269s14.804,15.181,7.831,19.498c-.859.531.69-4.121-3.254-5.512-4.446-1.568-14.315,3.266-17.997,9.563-4.582,7.836,1.063,19.99,15.483,10.283,16.427-11.057,18.603-27.489,25.571-28.322,4.712-.563,6.287,6.287,6.287,6.287,0,0-6.17.676-11.059,5.378-7.294,7.016-14.107,18.556-6.59,19.339,10.68,1.112,26.25-15.425,19.163-24.49-3.502-4.48,19.11.016,19.11.016,0,0-15.172,22.934-13.202,21.95,7.36-3.68,22.652-16.087,27.364-18.532,3.843-1.994-8.655,18.608-8.655,18.608,0,0,24.492-19.558,28.995-18.558,2.483.552-7.782,13.937-17.175,36.307-7.761,18.484-17.071,46.77-18.527,55.455-4.023,23.99-1.911,60.906,17.765,61.991,15.992.882,21.799-8.424,33.696-21.683,16.131-17.979-26.993-113.133-15.873-120.355,4.078-2.648,22.063-3.576,25.628-8.464,5.299-7.265-7.086-6.176-13.13-3.134-8.208,4.131-16.046,20.071-1.059,20.888,13.104.714,43.015-28.192,43.015-28.192");
   offset-rotate: 0deg;
 }

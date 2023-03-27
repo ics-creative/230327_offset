@@ -1,1 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><circle cx="100" cy="100" r="77.4" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><circle cx="100" cy="100" r="32.7" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><g><line x1="100" y1="100" x2="100" y2="198" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="157.6" y2="179.3" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="193.2" y2="130.3" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="193.2" y2="69.7" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="157.6" y2="20.7" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="100" y2="2" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="42.4" y2="20.7" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="6.8" y2="69.7" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="6.8" y2="130.3" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/><line x1="100" y1="100" x2="42.4" y2="179.3" style="fill:none; stroke:white; stroke-miterlimit:10; stroke-width:3px;"/></g><polygon points="100 2.5 144.9 38.2 192.7 69.9 172.7 123.6 157.3 178.9 100 176.4 42.7 178.9 27.3 123.6 7.3 69.9 55.1 38.2 100 2.5" style="fill:none; stroke:white; stroke-miterlimit:10;"/><polygon points="100 197.5 144.9 161.8 192.7 130.1 172.7 76.4 157.3 21.2 100 23.6 42.7 21.2 27.3 76.4 7.3 130.1 55.1 161.8 100 197.5" style="fill:none; stroke:white; stroke-miterlimit:10;"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="98" fill="none" stroke="white" stroke-width="3"/>
+    <circle cx="100" cy="100" r="77.4" fill="none" stroke="white" stroke-width="3"/>
+    <circle cx="100" cy="100" r="32.7" fill="none" stroke="white" stroke-width="3"/>
+    <g>
+        <line x1="100" y1="100" x2="100" y2="198"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="157.6" y2="179.3"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="193.2" y2="130.3"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="193.2" y2="69.7"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="157.6" y2="20.7"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="100" y2="2"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="42.4" y2="20.7"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="6.8" y2="69.7"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="6.8" y2="130.3"
+              fill="none" stroke="white" stroke-width="3"/>
+        <line x1="100" y1="100" x2="42.4" y2="179.3"
+              fill="none" stroke="white" stroke-width="3"/>
+    </g>
+    <polygon
+            points="100 2.5 144.9 38.2 192.7 69.9 172.7 123.6 157.3 178.9 100 176.4 42.7 178.9 27.3 123.6 7.3 69.9 55.1 38.2 100 2.5"
+            fill="none" stroke="white" stroke-width="1"/>
+    <polygon
+            points="100 197.5 144.9 161.8 192.7 130.1 172.7 76.4 157.3 21.2 100 23.6 42.7 21.2 27.3 76.4 7.3 130.1 55.1 161.8 100 197.5"
+            fill="none" stroke="white" stroke-width="1"/>
+</svg>

@@ -36,80 +36,82 @@
     <p class="hoverHere">▼観覧車ツンツンできます</p>
     <div class="wrapper wrapper__amusementPark">
       <div class="rollerCoaster">
-        <span class="rollerCoaster_vehicle" style="--index: 0;"></span>
-        <span class="rollerCoaster_vehicle" style="--index: 1;"></span>
-        <span class="rollerCoaster_vehicle" style="--index: 2;"></span>
-        <span class="rollerCoaster_vehicle" style="--index: 3;"></span>
+        <div class="rollerCoaster_vehicle">
+          <span class="rollerCoaster_vehicle_item" style="--index: 0;"></span>
+          <span class="rollerCoaster_vehicle_item" style="--index: 1;"></span>
+          <span class="rollerCoaster_vehicle_item" style="--index: 2;"></span>
+          <span class="rollerCoaster_vehicle_item" style="--index: 3;"></span>
+        </div>
 
         <span class="rollerCoaster_rail"></span>
       </div>
 
       <div class="ferrisWheel">
-        <!-- スマホでもタップで動かしたいため ontouchstart を追加しています-->
-        <div class="ferrisWheel_gondola gondola_0" style="--index: 0;" ontouchstart>
+        <!-- スマホでもタップで動かしたいため ontouchstart を追加しています -->
+        <div class="ferrisWheel_gondola" style="--index: 0;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_1" style="--index: 1;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 1;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_2" style="--index: 2;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 2;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_3" style="--index: 3;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 3;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_4" style="--index: 4;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 4;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_5" style="--index: 5;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 5;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_6" style="--index: 6;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 6;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_7" style="--index: 7;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 7;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_8" style="--index: 8;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 8;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
             </svg>
           </div>
         </div>
-        <div class="ferrisWheel_gondola gondola_9" style="--index: 9;" ontouchstart>
+        <div class="ferrisWheel_gondola" style="--index: 9;" ontouchstart>
           <div class="gondola">
             <svg width="40" height="40" viewBox="0 0 40 40">
               <use href="./images/amusementPark/ferriswheel_gondola.svg#gondola"/>
@@ -123,29 +125,8 @@
     </div>
   </section>
 
-  <section id="face">
-    <h2><code>animation-delay</code>でタイミングをずらしてアニメーション</h2>
-    <button data-button-id="face">再生する</button>
-    <div class="wrapper wrapper__face face" data-wrapper-id="face">
-      <span class="face_box">🕳</span>
-
-      <div class="face_imageWrapper">
-        <span class="face_image" style="--index: 4;">😇</span>
-        <span class="face_image" style="--index: 3;">😇</span>
-        <span class="face_image" style="--index: 2;">😇</span>
-        <span class="face_image" style="--index: 1;">😇</span>
-        <span class="face_image" style="--index: 0;">😇</span>
-      </div>
-
-      <div class="face_panel">
-        <input type="checkbox" id="path-face">
-        <label for="path-face">パスを表示する</label>
-        <span class="face_panel_path"></span>
-      </div>
-    </div>
-  </section>
-
   <section id="coffee">
+    <h2><code>animation-delay</code>でタイミングをずらしてアニメーション</h2>
     <div class="wrapper coffee">
       <div class="coffee_text">
         <span>L</span>
@@ -168,6 +149,27 @@
       </div>
 
       <span class="coffee_cup"></span>
+    </div>
+  </section>
+
+  <section id="face">
+    <button data-button-id="face">再生する</button>
+    <div class="wrapper wrapper__face face" data-wrapper-id="face">
+      <span class="face_box">🕳</span>
+
+      <div class="face_imageWrapper">
+        <span class="face_image" style="--index: 4;">😇</span>
+        <span class="face_image" style="--index: 3;">😇</span>
+        <span class="face_image" style="--index: 2;">😇</span>
+        <span class="face_image" style="--index: 1;">😇</span>
+        <span class="face_image" style="--index: 0;">😇</span>
+      </div>
+
+      <div class="face_panel">
+        <input type="checkbox" id="path-face">
+        <label for="path-face">パスを表示する</label>
+        <span class="face_panel_path"></span>
+      </div>
     </div>
   </section>
 
@@ -220,14 +222,15 @@
           <span class="ghost_panel_path"></span>
         </div>
 
-        <span class="ghost_image"></span>
+        <!-- スマホでもタップで動かしたいため ontouchstart を追加しています -->
+        <span class="ghost_image" ontouchstart></span>
       </div>
     </div>
   </section>
 
   <section id="letters">
     <h2>
-      よく見る手書き風で文字が登場するアニメーションに、<code>offset-distance</code>で万年筆を動かして、書いている感を極めたアニメーション
+      手書き文字風のアニメーションにペンを追従させ、書いてる感を極めた例
     </h2>
     <button data-button-id="letters">再生する</button>
     <div class="wrapper wrapper__letters">
@@ -252,6 +255,7 @@
             </g>
 
             <mask id="letters-svg-mask">
+              <!-- 🌟万年筆のoffset-pathに指定するパスと同じ値です🌟-->
               <path
                   d="m2.348,80.572s13.419,12.98,21.14,11.079c11.174-2.751,31.536-24.701,38.025-25.239,6.389-.53-21.385,25.693-24.459,29.718-5.413,7.09-11.605,25.283-4.55,31.493,7.863,6.923,13.393-.655,24.769-25.374,5.379-11.687-4.068,10.878-3.945,16.587.122,5.676,1.673,14.786,13.121,13.366,13.775-1.709,27.472-54.096,41.337-72.768C119.974,43.023,148.869,1.639,164.589,3.026c13.958,1.232.197,23.508-1.461,26.479-3.816,6.839-18.161,39.068-46.781,47.618-20.951,6.259-24.626,35.136-24.711,36.652-.236,4.194,10.144,9.91,24.458-1.367,7.269-5.726-15.819-2.254-28.611,11.33-5.506,5.846,2.134,14.338,22.023,5.488,8.209-3.652,13.658-17.127,22.108-34.831,8.083-16.934,16.413-30.211,25.093-42.971,8.832-12.984,11.515-19.457,14.518-17.214,1.995,1.49-1.672,6.158-4.269,11.16-14.194,27.343-50.166,83.811-49.027,85.52,1.501,2.251,23.432-36.26,32.686-36.26s14.804,15.181,7.831,19.498c-.859.531.69-4.121-3.254-5.512-4.446-1.568-15.376,3.873-19.058,10.17-4.582,7.836,1.464,17.941,16.606,10.476,5.443-2.683,7.921-8.839,11.257-13.964,5.06-7.774,10.053-14.656,14.253-15.158,4.712-.563,6.287,6.287,6.287,6.287,0,0-6.17.676-11.059,5.378-7.294,7.016-14.107,18.556-6.59,19.339,10.68,1.112,26.25-15.425,19.163-24.49-3.502-4.48,19.11.016,19.11.016,0,0-15.172,22.934-13.202,21.95,7.36-3.68,22.652-16.087,27.364-18.532,3.843-1.994-8.655,18.608-8.655,18.608,0,0,24.492-19.558,28.995-18.558,2.483.552-7.782,13.937-17.175,36.307-7.761,18.484-17.071,46.77-18.527,55.455-4.023,23.99-1.911,60.906,17.765,61.991,15.992.882,21.799-8.424,33.696-21.683,16.131-17.979-26.232-116.275-15.112-123.496,1.019-.662,3.398,1.227,5.684.955,6.86-.816,16.662-2.504,19.182-6.277,4.198-6.286-7.162-6.324-13.13-3.134-9.205,4.921-14.85,16.586-2.918,20.99,9.58,3.536,44.874-28.294,44.874-28.294"
                   fill="none" stroke="white" stroke-width="5.5"/>
@@ -264,8 +268,6 @@
     </div>
   </section>
 </div>
-
-<!--TODO: 見出し検討 -->
 
 <script src="script/index.js" type="module"></script>
 </body>
