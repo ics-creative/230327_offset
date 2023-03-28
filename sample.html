@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: deepskyblue;
+      color: white;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      position: relative;
+      margin-top: 60px;
+      max-width: 960px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .offsetElementWrapper {
+      width: 560px;
+      height: 240px;
+    }
+
+    @media (max-width: 760px) {
+      .offsetElementWrapper {
+        width: 360px;
+      }
+    }
+
+    /* メンダコ */
+    .offsetElement {
+      position: absolute;
+      width: 256px;
+      height: 144px;
+      background-image: url("./images/pancake/pancake.GIF");
+      offset-path: path("m151.363,24.535c34.261,34.838-42.065,118.74,33.549,142.049,64.387,19.848,50.065-102.368,139.927-113.695,109.927-13.856,75.035,64.581,83.68,110.545,12.157,64.636,86.686,83.689,111.933,25.314,25.219-58.312-39.419-40.603-38.543-99.518.491-32.993-26.601-61.017-64.31-61.017-139.281,0-66.329,188.211-135.904,188.237-71.351.027-2.296-134.161-96.919-134.161-66.593,0-36.324,104.43-92.322,127.132-41.714,16.911-68.195-14.6-57.769-49.188,4.351-14.435,32.224-56.076,31.875-76.524-.944-55.405,52.701-82.118,84.803-59.173");
+      offset-rotate: auto 90deg;
+      animation: move 40s linear infinite;
+    }
+
+    @media (max-width: 760px) {
+      .offsetElement {
+        offset-path: path("m95.159,29.048c22.537,33.191-27.671,113.126,22.069,135.333,42.354,18.91,32.933-97.529,92.046-108.32,72.311-13.201,49.359,61.528,55.046,105.319,7.997,61.58,57.023,79.732,73.631,24.117,16.59-55.556-25.93-38.684-25.354-94.813.323-31.433-17.498-58.133-42.304-58.133-91.621,0-43.632,179.314-89.399,179.338-46.935.025-1.51-127.819-63.754-127.819-43.806,0-23.894,99.493-60.731,121.122-27.44,16.112-44.86-13.91-38.001-46.863,2.862-13.752,21.197-53.425,20.968-72.907-.621-52.786,34.668-78.236,55.785-56.375");
+      }
+    }
+
+    @keyframes move {
+      to {
+        offset-distance: 100%;
+      }
+    }
+
+    /* 移動経路の点線用 */
+    .offsetPath {
+      position: absolute;
+      width: 560px;
+      height: 240px;
+      background-image: url("./images/pancake/pancake_path.svg");
+    }
+
+    @media (max-width: 760px) {
+      .offsetPath {
+        width: 360px;
+        background-image: url("./images/pancake/pancake_path_sp.svg");
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <div class="offsetPath"></div>
+
+  <div class="offsetElementWrapper">
+    <div class="offsetElement"></div>
+  </div>
+</div>
+</body>
+
+</html>

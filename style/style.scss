@@ -31,15 +31,9 @@
         offset-distance: 100%;
         opacity: 0;
       }
-
-      10% {
+      10%, 90% {
         opacity: 1;
       }
-
-      90% {
-        opacity: 1;
-      }
-
       100% {
         offset-distance: 0;
         opacity: 0;
@@ -47,15 +41,12 @@
     }
 
     @keyframes distort-text {
-
       45% {
         transform: scaleY(1);
       }
-
       65% {
         transform: scaleY(1.8);
       }
-
       85% {
         transform: scaleY(1);
       }
@@ -146,30 +137,27 @@
   $total: 30;
   @for $i from 1 through $total {
     > span:nth-child(#{$i}) {
-      animation-delay: $i * 0.05s;
-      offset-distance: 100% / $total * $i;
+      offset-distance: 100% / $total * $i; // 一輪ずつずらして均等に配置
+      animation-delay: $i * 0.05s; // 一輪ごとに0.05sずらしてアニメーション
     }
   }
-}
 
-@keyframes bloom {
-  0% {
-    opacity: 0;
-    transform: scale(0) rotate(-180deg);
-  }
-
-  30% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-
-  70% {
-    opacity: 1;
-    transform: scale(1) rotate(20deg);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(0.5) rotate(180deg);
+  @keyframes bloom {
+    0% {
+      opacity: 0;
+      transform: scale(0) rotate(-180deg);
+    }
+    30% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    70% {
+      opacity: 1;
+      transform: scale(1) rotate(20deg);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.5) rotate(180deg);
+    }
   }
 }

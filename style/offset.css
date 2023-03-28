@@ -1,53 +1,8 @@
+/* いくつかの作例で共通して使うキーフレームです */
 @keyframes move {
   to {
     offset-distance: 100%;
   }
-}
-
-/* ------------------ メンダコ ------------------ */
-.pancake {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.pancake_image {
-  position: absolute;
-  top: calc(1rem + 8px); /* labelの高さ */
-  display: block;
-  width: 256px;
-  height: 144px;
-  translate: calc(-50% - 20px);
-  background-image: url("../images/pancake/pancake.GIF");
-  pointer-events: none;
-  offset-path: path("m151.363,24.535c34.261,34.838-42.065,118.74,33.549,142.049,64.387,19.848,50.065-102.368,139.927-113.695,109.927-13.856,75.035,64.581,83.68,110.545,12.157,64.636,86.686,83.689,111.933,25.314,25.219-58.312-39.419-40.603-38.543-99.518.491-32.993-26.601-61.017-64.31-61.017-139.281,0-66.329,188.211-135.904,188.237-71.351.027-2.296-134.161-96.919-134.161-66.593,0-36.324,104.43-92.322,127.132-41.714,16.911-68.195-14.6-57.769-49.188,4.351-14.435,32.224-56.076,31.875-76.524-.944-55.405,52.701-82.118,84.803-59.173");
-  offset-rotate: auto 90deg;
-  animation: move 40s linear infinite;
-}
-
-/* パスの表示/非表示を切り替えるパネル */
-.pancake_panel {
-  width: 100%;
-}
-
-.pancake_panel_path {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  visibility: hidden;
-}
-
-.pancake_panel_path::after {
-  content: "";
-  display: block;
-  width: 560px;
-  height: 240px;
-  background-image: url("../images/pancake/pancake_path.svg");
-}
-
-#path-pancake:checked ~ .pancake_panel_path {
-  visibility: visible;
 }
 
 /* ------------------ 遊園地：観覧車 ------------------ */
@@ -68,7 +23,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  margin-top: 20px; /* offset-anchorプロパティが全ブラウザでは対応していないので、余白で位置を調整 */
+  translate: 0 20px; /* offset-anchorプロパティが全ブラウザでは対応していないので、translateで位置を調整 */
   fill: hsl(calc(15deg + var(--index) * 36deg), 100%, 80%); /* CSS変数(--index)の値に応じて色相をずらし、レインボーにする */
   cursor: pointer;
   offset-path: path("M100,0 A100,100 0 1,1 100,200 A100,100 0 1,1 100,0 Z");
@@ -108,33 +63,26 @@
 
 /* ゴンドラが揺れるアニメーション */
 @keyframes swing-gondola {
-  0% {
-    transform: rotate(0deg);
-  }
   10% {
-    transform: rotate(45deg);
+    rotate: 45deg;
   }
   35% {
-    transform: rotate(-38deg);
+    rotate: -38deg;
   }
   55% {
-    transform: rotate(25deg);
+    rotate: 25deg;
   }
   70% {
-    transform: rotate(-15deg);
+    rotate: -15deg;
   }
   90% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(0deg);
+    rotate: 5deg;
   }
 }
 
 .ferrisWheel_wheel, .ferrisWheel_frame {
   position: absolute;
   display: block;
-  user-select: none;
   pointer-events: none;
 }
 
@@ -142,13 +90,12 @@
   width: 200px;
   height: 200px;
   background-image: url("../images/amusementPark/ferriswheel_wheel.svg");
-  transform-origin: center;
   animation: rotate-wheel 40s linear infinite;
 }
 
 @keyframes rotate-wheel {
-  100% {
-    transform: rotate(360deg);
+  to {
+    rotate: 360deg;
   }
 }
 
@@ -220,36 +167,30 @@
 }
 
 [data-wrapper-id="face"].is-active .face_image {
-  animation: move-face 4s ease-out calc(0.1s * var(--index)), disappear-face 4s linear calc(0.1s * var(--index));
-}
-
-@keyframes move-face {
-  70% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0);
-    offset-distance: 100%;
-  }
+  animation: move 4s ease-out calc(0.1s * var(--index)), disappear-face 4s linear calc(0.1s * var(--index));
 }
 
 @keyframes disappear-face {
+  70% {
+    transform: scale(1);
+  }
   85% {
     opacity: calc(1 - 0.2 * var(--index));
   }
-
   95% {
     opacity: 0;
+  }
+  97%, 100% {
+    transform: scale(0);
   }
 }
 
 .face_box {
   position: absolute;
-  display: block;
-  font-size: 90px;
   bottom: -15px;
   left: calc(50% + 40px);
+  display: block;
+  font-size: 90px;
 }
 
 /* パスの表示/非表示を切り替えるパネル */
@@ -286,19 +227,19 @@
   cursor: pointer;
   offset-path: path("m241.751,142.925c43.31-20.713,56.006-62.201,100.549-86.711,44.272-24.361,156.608-41.807,178.889-33.531,58.392,21.69-37.254,58.35-43.212,60.362-44.593,15.06-166.413,5.261-262.904-14.993-40.339-8.468-145.335-63.352-179.788-15.503-30.698,42.634,28.139,84.58,101.046,64.34,86.311-23.961,163.652-4.758,251.582,10.994,48.604,8.707,166.749,19.277,112.151,47.34-36.778,18.904-131.732,7.721-198.408,1.747C180.349,166.1-8.912,291.142.864,201.323c6.569-60.352,175.83-23.933,240.887-58.398");
   offset-rotate: 0deg;
-  animation: move 40s linear infinite, flip-ghost 40s linear infinite;
+  animation: move 40s linear infinite, flip 40s linear infinite;
   animation-play-state: running;
 }
 
 @media (max-width: 760px) {
   .ghost_image {
     left: calc(50% - 185px);
-    offset-path: path("m165.731,142.925c29.663-20.713,38.358-62.201,68.865-86.711,30.322-24.361,107.26-41.807,122.52-33.531,39.992,21.69-25.515,58.35-29.595,60.362-30.541,15.06-113.975,5.261-180.061-14.993-27.628-8.468-99.539-63.352-123.135-15.503-21.025,42.634,19.273,84.58,69.206,64.34,59.114-23.961,112.084-4.758,172.307,10.994,33.289,8.707,114.205,19.277,76.811,47.34-25.189,18.904-90.223,7.721-135.888,1.747C123.677,166.1-5.946,291.142.749,201.323c4.499-60.352,120.425-23.933,164.982-58.398");
+    offset-path: path("m167.145,142.925c27.134-20.713,35.088-62.201,62.994-86.711,27.737-24.361,98.116-41.807,112.075-33.531,36.583,21.69-23.34,58.35-27.072,60.362-27.938,15.06-104.259,5.261-164.711-14.993-25.273-8.468-91.053-63.352-112.638-15.503-19.232,42.634,17.63,84.58,63.306,64.34,54.075-23.961,102.529-4.758,157.618,10.994,30.451,8.707,104.469,19.277,70.263,47.34-23.042,18.904-82.531,7.721-124.304,1.747-76-10.869-194.574,114.173-188.448,24.354,4.116-60.352,110.159-23.933,150.917-58.398");
   }
 }
 
 /* パスの左右両端の位置で、フリップして向きを変える。offset-distanceを動かして、パス上では何％が両端になるのか確認し、キーフレームを打つ */
-@keyframes flip-ghost {
+@keyframes flip {
   15% {
     transform: scaleX(1);
   }
@@ -326,7 +267,7 @@
 }
 
 /* ふわふわ浮遊する動き */
-@keyframes floating {
+@keyframes float {
   from {
     transform: translateY(10%);
   }
@@ -336,7 +277,7 @@
 }
 
 /* ブルブル震える動き */
-@keyframes shaking {
+@keyframes shake {
   0% {
     transform: translateX(-4%);
   }
@@ -361,7 +302,7 @@
 .ghost_image::before {
   opacity: 1;
   background-image: url("../images/ghost/ghost_fluid.png");
-  /*animation: floating 1s ease-out infinite alternate;*/
+  animation: float 1s ease-out infinite alternate;
 }
 
 .ghost_image::after {
@@ -381,7 +322,7 @@
 
   .ghost_image:hover.ghost_image::after {
     opacity: 1;
-    animation: shaking 0.1s linear infinite;
+    animation: shake 0.1s linear infinite;
   }
 }
 
@@ -397,7 +338,7 @@
 
   .ghost_image:active.ghost_image::after {
     opacity: 1;
-    animation: shaking 0.1s linear infinite;
+    animation: shake 0.1s linear infinite;
   }
 }
 
