@@ -47,4 +47,3 @@ const clickAndPlay = (buttonId, wrapperId, animDuration, shouldToggle) => {
     }
   });
 };
-
