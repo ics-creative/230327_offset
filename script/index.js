@@ -3,10 +3,10 @@
  * */
 window.addEventListener("DOMContentLoaded", () => {
   clickAndPlay("letters", "letters", 5500, true);
-})
+});
 
 /** アニメーションを再生させるために付与するクラス名 */
-const ACTIVE_CLASS_NAME = "is-active"
+const ACTIVE_CLASS_NAME = "is-active";
 
 /**
  * ボタン押下でアニメーションを再生するためのactiveクラスを付与します
@@ -23,14 +23,14 @@ const clickAndPlay = (buttonId, wrapperId, animDuration, shouldToggle) => {
   /** タイマー */
   let timeoutID = null;
 
-  button.addEventListener("click", (event) => {
+  button.addEventListener("click", () => {
     // アニメーション中はクリックを受け付けない。
     if (isPlaying) {
       return;
     }
 
     if (wrapper.classList.contains(ACTIVE_CLASS_NAME)) {
-      button.innerHTML = "再生する"
+      button.innerHTML = "再生する";
       wrapper.classList.remove(ACTIVE_CLASS_NAME);
       clearTimeout(timeoutID);
     } else {
@@ -38,14 +38,13 @@ const clickAndPlay = (buttonId, wrapperId, animDuration, shouldToggle) => {
       isPlaying = true;
       timeoutID = setTimeout(() => {
         isPlaying = false;
-
         if (!shouldToggle) {
           wrapper.classList.remove(ACTIVE_CLASS_NAME);
         } else {
           button.innerHTML = "リセット";
         }
-      }, animDuration)
+      }, animDuration);
     }
   });
-}
+};
 
