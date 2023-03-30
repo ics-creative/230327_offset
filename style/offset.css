@@ -311,7 +311,7 @@
   color: white;
 }
 
-/* ------------------ 文字書いている風 ------------------ */
+/* ------------------ 文字を書いている風 ------------------ */
 .wrapper__letters {
   display: flex;
   justify-content: center;
