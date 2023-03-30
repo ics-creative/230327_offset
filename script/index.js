@@ -2,13 +2,8 @@
  * ボタン押下でアニメーション再生する用のjsファイルです
  * */
 window.addEventListener("DOMContentLoaded", () => {
-  init();
-})
-
-const init = () => {
-  clickAndPlay("face", "face", 4000, false);
   clickAndPlay("letters", "letters", 5500, true);
-}
+})
 
 /** アニメーションを再生させるために付与するクラス名 */
 const ACTIVE_CLASS_NAME = "is-active"
@@ -31,7 +26,6 @@ const clickAndPlay = (buttonId, wrapperId, animDuration, shouldToggle) => {
   button.addEventListener("click", (event) => {
     // アニメーション中はクリックを受け付けない。
     if (isPlaying) {
-      event.preventDefault();
       return;
     }
 
