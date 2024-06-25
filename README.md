@@ -1,4 +1,4 @@
-# 230718_scroll_driven_animations
+# 230327_offset
 
 記事『[CSSのoffsetプロパティで、楽しいパスアニメーションを作ろう](https://ics.media/entry/230327/)』のサンプルコードです。
 
