@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "check": "biome check .",
+    "format": "biome format --write .",
+    "lint": "biome lint ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.13"
+  }
+}

@@ -16,9 +16,13 @@
   position: absolute;
   display: block;
   font-size: 16px;
-  offset-path: path("m61.498,27.295c9.366,9.437,4.071,22.205-6.929,23.205-10.006.91-19.834-7.567-19.834-23.475,0-13,12.942-24.525,31.834-24.525,18.704,0,25.174,19.976,25,32-.231,16.017-7.03,24.708-13,34-18.22,28.357-18.22,49.926-13,58");
+  offset-path: path(
+    "m61.498,27.295c9.366,9.437,4.071,22.205-6.929,23.205-10.006.91-19.834-7.567-19.834-23.475,0-13,12.942-24.525,31.834-24.525,18.704,0,25.174,19.976,25,32-.231,16.017-7.03,24.708-13,34-18.22,28.357-18.22,49.926-13,58"
+  );
   opacity: 0;
-  animation: move-text 3.2s linear infinite, distort-text 3.2s linear infinite;
+  animation:
+    move-text 3.2s linear infinite,
+    distort-text 3.2s linear infinite;
 }
 .coffee_text > span:nth-child(1) {
   animation-delay: 0.1s;
@@ -76,7 +80,8 @@
     offset-distance: 100%;
     opacity: 0;
   }
-  10%, 90% {
+  10%,
+  90% {
     opacity: 1;
   }
   100% {
@@ -129,7 +134,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   animation: bloom 1.5s ease-out infinite;
-  offset-path: path("m98.754,196.422c31.104,0,152.054-138.577,69.462-184.493-44.918-24.971-84.351,18.188-84.351,53.101,0,27.57,30.877,28.712,30.692,0-.225-34.917-42.448-84.809-87.857-52.101-75.397,54.309,44.425,183.493,72.053,183.493");
+  offset-path: path(
+    "m98.754,196.422c31.104,0,152.054-138.577,69.462-184.493-44.918-24.971-84.351,18.188-84.351,53.101,0,27.57,30.877,28.712,30.692,0-.225-34.917-42.448-84.809-87.857-52.101-75.397,54.309,44.425,183.493,72.053,183.493"
+  );
 }
 .flower > span:nth-child(3n) {
   width: 35px;
@@ -301,4 +308,4 @@
     opacity: 0;
     transform: scale(0.5) rotate(180deg);
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
