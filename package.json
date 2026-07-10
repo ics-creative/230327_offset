@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "check": "biome check .",
     "format": "biome format --write .",
     "lint": "biome lint ."
   },
