@@ -33,6 +33,7 @@
   offset-path: path("M100,0 A100,100 0 1,1 100,200 A100,100 0 1,1 100,0 Z");
   offset-rotate: 0deg;
   animation: rotate-gondola 40s linear infinite;
+  touch-action: manipulation;
 }
 
 /* 観覧車が回転するアニメーション */
@@ -62,7 +63,7 @@
   }
 }
 
-/* スマホでも動作させたいので、HTMLにontouchstartを追加し、CSSでactiveクラスを指定しています */
+/* スマホでの操作 */
 @media (any-hover: none) {
   .ferrisWheel_gondola:active .gondola {
     animation: swing-gondola 0.8s ease-out;
@@ -173,6 +174,7 @@
     move 40s linear infinite,
     flip 40s linear infinite;
   animation-play-state: running;
+  touch-action: manipulation;
 
   &::after,
   &::before {
@@ -271,7 +273,7 @@
   }
 }
 
-/* スマホでも動作させたいので、HTMLにontouchstartを追加し、CSSでactiveクラスを指定しています */
+/* スマホでの操作 */
 @media (any-hover: none) {
   .ghost_image {
     &:active {
