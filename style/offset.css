@@ -173,9 +173,31 @@
     move 40s linear infinite,
     flip 40s linear infinite;
   animation-play-state: running;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    translate: -50% -50%; /* 中心をずらす */
+  }
+
+  &::before {
+    opacity: 1;
+    background-image: url("../images/ghost/ghost_fluid.png");
+    animation: float 1s ease-out infinite alternate;
+  }
+
+  &::after {
+    opacity: 0;
+    background-image: url("../images/ghost/ghost_rigid.png");
+  }
 }
 
-@media (max-width: 760px) {
+@media (width <= 760px) {
   .ghost_image {
     left: calc(50% - 185px);
     offset-path: path(
@@ -235,57 +257,35 @@
   }
 }
 
-.ghost_image::after,
-.ghost_image::before {
-  content: "";
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  translate: -50% -50%; /* 中心をずらす */
-}
-
-.ghost_image::before {
-  opacity: 1;
-  background-image: url("../images/ghost/ghost_fluid.png");
-  animation: float 1s ease-out infinite alternate;
-}
-
-.ghost_image::after {
-  opacity: 0;
-  background-image: url("../images/ghost/ghost_rigid.png");
-}
-
 /* ホバー可能なデバイスでのみ適用 */
 @media (any-hover: hover) {
   .ghost_image:hover {
     animation-play-state: paused;
-  }
-
-  .ghost_image:hover.ghost_image::before {
-    opacity: 0;
-  }
-
-  .ghost_image:hover.ghost_image::after {
-    opacity: 1;
-    animation: shake 0.1s linear infinite;
+    &::before {
+      opacity: 0;
+    }
+    &::after {
+      opacity: 1;
+      animation: shake 0.1s linear infinite;
+    }
   }
 }
 
 /* スマホでも動作させたいので、HTMLにontouchstartを追加し、CSSでactiveクラスを指定しています */
 @media (any-hover: none) {
-  .ghost_image:active {
-    animation-play-state: paused;
-  }
+  .ghost_image {
+    &:active {
+      animation-play-state: paused;
 
-  .ghost_image:active.ghost_image::before {
-    opacity: 0;
-  }
+      &::before {
+        opacity: 0;
+      }
 
-  .ghost_image:active.ghost_image::after {
-    opacity: 1;
-    animation: shake 0.1s linear infinite;
+      &::after {
+        opacity: 1;
+        animation: shake 0.1s linear infinite;
+      }
+    }
   }
 }
 
@@ -310,7 +310,7 @@
   background-image: url("../images/ghost/ghost_path.svg");
 }
 
-@media (max-width: 760px) {
+@media (width <= 760px) {
   .ghost_panel_path::after {
     width: 370px;
     background-image: url("../images/ghost/ghost_path_sp.svg");

@@ -23,13 +23,12 @@ body {
     background-color: #222;
     color: #fff;
   }
-
   label {
     color: #222;
   }
 }
 
-@media (max-width: 760px) {
+@media (width <= 760px) {
   body {
     margin: 16px;
     font-size: 12px;
@@ -91,12 +90,12 @@ button {
   font-size: 1rem;
   font-weight: bold;
   transition: background-color 0.2s ease-out;
-}
 
-@media (any-hover: hover) {
-  button:hover {
-    background-color: var(--sub-color);
-    color: var(--main-color);
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--sub-color);
+      color: var(--main-color);
+    }
   }
 }
 
