@@ -209,51 +209,51 @@
 /* パスの左右両端の位置で、フリップして向きを変える。offset-distanceを動かして、パス上では何％が両端になるのか確認し、キーフレームを打つ */
 @keyframes flip {
   15% {
-    transform: scaleX(1);
+    scale: 1 1;
   }
   16% {
-    transform: scaleX(-1);
+    scale: -1 1;
   }
   40% {
-    transform: scaleX(-1);
+    scale: -1 1;
   }
   41% {
-    transform: scaleX(1);
+    scale: 1 1;
   }
   63% {
-    transform: scaleX(1);
+    scale: 1 1;
   }
   64% {
-    transform: scaleX(-1);
+    scale: -1 1;
   }
   87% {
-    transform: scaleX(-1);
+    scale: -1 1;
   }
   88% {
-    transform: scaleX(1);
+    scale: 1 1;
   }
 }
 
 /* ふわふわ浮遊する動き */
 @keyframes float {
   from {
-    transform: translateY(10%);
+    translate: 0 10%;
   }
   to {
-    transform: translateY(-10%);
+    translate: 0 -10%;
   }
 }
 
 /* ブルブル震える動き */
 @keyframes shake {
   0% {
-    transform: translateX(-4%);
+    translate: -4%;
   }
   50% {
-    transform: translateX(5%);
+    translate: 5%;
   }
   100% {
-    transform: translateX(-4%);
+    translate: -4%;
   }
 }
 

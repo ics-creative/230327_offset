@@ -59,19 +59,19 @@
 
 @keyframes distort-text {
   45% {
-    transform: scaleY(1);
+    scale: 1 1;
   }
 
   65% {
-    transform: scaleY(1.8);
+    scale: 1 1.8;
   }
 
   85% {
-    transform: scaleY(1);
+    scale: 1 1;
   }
 
   100% {
-    transform: scaleY(0.5);
+    scale: 1 0.5;
   }
 }
 
@@ -149,21 +149,25 @@
 @keyframes bloom {
   0% {
     opacity: 0;
-    transform: scale(0) rotate(-180deg);
+    scale: 0;
+    rotate: -180deg;
   }
 
   30% {
     opacity: 1;
-    transform: scale(1) rotate(0deg);
+    scale: 1;
+    rotate: 0deg;
   }
 
   70% {
     opacity: 1;
-    transform: scale(1) rotate(20deg);
+    scale: 1;
+    rotate: 20deg;
   }
 
   100% {
     opacity: 0;
-    transform: scale(0.5) rotate(180deg);
+    scale: 0.5;
+    rotate: 180deg;
   }
 }
