@@ -23,7 +23,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  translate: 0 20px; /* offset-anchorプロパティが全ブラウザでは対応していないので、translateで位置を調整 */
+  translate: 0 20px;
   fill: hsl(
     calc(15deg + (sibling-index() - 1) * 36deg),
     100%,
