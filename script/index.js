@@ -18,6 +18,7 @@ const ACTIVE_CLASS_NAME = "is-active";
 const clickAndPlay = (buttonId, wrapperId, animDuration, shouldToggle) => {
   const button = document.querySelector(`[data-button-id="${buttonId}"]`);
   const wrapper = document.querySelector(`[data-wrapper-id="${wrapperId}"]`);
+
   /** 再生中か？ */
   let isPlaying = false;
   /** タイマー */
@@ -30,7 +31,7 @@ const clickAndPlay = (buttonId, wrapperId, animDuration, shouldToggle) => {
     }
 
     if (wrapper.classList.contains(ACTIVE_CLASS_NAME)) {
-      button.innerHTML = "再生する";
+      button.textContent = "再生する";
       wrapper.classList.remove(ACTIVE_CLASS_NAME);
       clearTimeout(timeoutID);
     } else {
@@ -41,7 +42,7 @@ const clickAndPlay = (buttonId, wrapperId, animDuration, shouldToggle) => {
         if (!shouldToggle) {
           wrapper.classList.remove(ACTIVE_CLASS_NAME);
         } else {
-          button.innerHTML = "リセット";
+          button.textContent = "リセット";
         }
       }, animDuration);
     }
