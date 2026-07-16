@@ -27,7 +27,7 @@
           );
           opacity: 0;
           animation:
-            move-text 3.2s linear infinite,
+            move-text 3.2s ease-in-out infinite, /* あえて弱めのイージング */
             distort-text 3.2s linear infinite;
           animation-delay: calc(sibling-index() * 0.1s);
         }
