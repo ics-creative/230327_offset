@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evenly Spaced Flowers / 均等配置の花 | CSS Offset Demos</title>
+    <link rel="stylesheet" href="./styles/base.css">
+    <style>
+    .wrapper__flower {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: deepskyblue;
+
+      .flower {
+        position: relative;
+        width: 200px;
+        height: 200px;
+
+        span {
+          position: absolute;
+          display: block;
+          width: 40px;
+          height: 40px;
+          background-repeat: no-repeat;
+          background-size: contain;
+          offset-path: path(
+            "m98.754,196.422c31.104,0,152.054-138.577,69.462-184.493-44.918-24.971-84.351,18.188-84.351,53.101,0,27.57,30.877,28.712,30.692,0-.225-34.917-42.448-84.809-87.857-52.101-75.397,54.309,44.425,183.493,72.053,183.493"
+          );
+          offset-distance: calc(100% * sibling-index() / sibling-count());
+          animation: bloom 1.5s ease-out infinite;
+          animation-delay: calc(sibling-index() * 0.05s);
+
+          &:nth-child(3n) {
+            width: 35px;
+            height: 35px;
+          }
+
+          &:nth-child(4n) {
+            width: 32px;
+            height: 32px;
+          }
+
+          &:nth-child(7n) {
+            width: 28px;
+            height: 28px;
+          }
+
+          &.flower_yellow {
+            background-image: url("./images/flower/flower_yellow.png");
+          }
+
+          &.flower_blue {
+            background-image: url("./images/flower/flower_blue.png");
+          }
+
+          &.flower_plum {
+            background-image: url("./images/flower/flower_plum.png");
+          }
+
+          &.flower_purple {
+            background-image: url("./images/flower/flower_purple.png");
+          }
+
+          &.flower_sakura01 {
+            background-image: url("./images/flower/flower_sakura_01.png");
+          }
+
+          &.flower_sakura02 {
+            background-image: url("./images/flower/flower_sakura_02.png");
+          }
+
+          &.flower_sakura03 {
+            background-image: url("./images/flower/flower_sakura_03.png");
+          }
+        }
+      }
+    }
+
+    @keyframes bloom {
+      0% {
+        opacity: 0;
+        transform: rotate(180deg) scale(0);
+      }
+      30% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+      70% {
+        opacity: 1;
+        transform: rotate(20deg) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: rotate(180deg) scale(0.5);
+      }
+    }
+    </style>
+  </head>
+
+  <body>
+    <main class="contents">
+      <section class="demo">
+        <div class="wrapper wrapper__flower">
+          <div class="flower">
+            <span class="flower_purple"></span>
+            <span class="flower_sakura01"></span>
+            <span class="flower_blue"></span>
+            <span class="flower_sakura03"></span>
+            <span class="flower_plum"></span>
+            <span class="flower_sakura01"></span>
+            <span class="flower_yellow"></span>
+            <span class="flower_sakura02"></span>
+            <span class="flower_plum"></span>
+            <span class="flower_purple"></span>
+            <span class="flower_sakura03"></span>
+            <span class="flower_blue"></span>
+            <span class="flower_sakura01"></span>
+            <span class="flower_plum"></span>
+            <span class="flower_yellow"></span>
+            <span class="flower_sakura03"></span>
+            <span class="flower_sakura02"></span>
+            <span class="flower_purple"></span>
+            <span class="flower_sakura01"></span>
+            <span class="flower_blue"></span>
+            <span class="flower_yellow"></span>
+            <span class="flower_plum"></span>
+            <span class="flower_sakura02"></span>
+            <span class="flower_sakura03"></span>
+            <span class="flower_blue"></span>
+            <span class="flower_purple"></span>
+            <span class="flower_sakura01"></span>
+            <span class="flower_plum"></span>
+            <span class="flower_yellow"></span>
+            <span class="flower_sakura02"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

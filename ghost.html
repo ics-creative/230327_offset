@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flipping Ghost / 左右で反転するおばけ | CSS Offset Demos</title>
+    <link rel="stylesheet" href="./styles/base.css">
+    <style>
+    .wrapper__ghost {
+      background-color: #222;
+
+      .ghost {
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        .ghost_image {
+          position: absolute;
+          top: calc(1rem + 8px);
+          left: calc(50% - 270px);
+          display: block;
+          cursor: pointer;
+          offset-path: path(
+            "m241.751,142.925c43.31-20.713,56.006-62.201,100.549-86.711,44.272-24.361,156.608-41.807,178.889-33.531,58.392,21.69-37.254,58.35-43.212,60.362-44.593,15.06-166.413,5.261-262.904-14.993-40.339-8.468-145.335-63.352-179.788-15.503-30.698,42.634,28.139,84.58,101.046,64.34,86.311-23.961,163.652-4.758,251.582,10.994,48.604,8.707,166.749,19.277,112.151,47.34-36.778,18.904-131.732,7.721-198.408,1.747C180.349,166.1-8.912,291.142.864,201.323c6.569-60.352,175.83-23.933,240.887-58.398"
+          );
+          offset-rotate: 0deg;
+          animation: move 40s linear infinite;
+          animation-play-state: running;
+          touch-action: manipulation;
+
+          &::before,
+          &::after {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            content: "";
+            background-repeat: no-repeat;
+            background-size: contain;
+            translate: -50% -50%;
+          }
+
+          &::before {
+            background-image: url("./images/ghost/ghost_fluid.png");
+            opacity: 1;
+            animation:
+              float 1s ease-out infinite alternate,
+              flip 40s linear infinite;
+          }
+
+          &::after {
+            background-image: url("./images/ghost/ghost_rigid.png");
+            opacity: 0;
+            animation: flip 40s linear infinite;
+          }
+
+          @media (width <= 760px) {
+            left: calc(50% - 185px);
+            offset-path: path(
+              "m167.145,142.925c27.134-20.713,35.088-62.201,62.994-86.711,27.737-24.361,98.116-41.807,112.075-33.531,36.583,21.69-23.34,58.35-27.072,60.362-27.938,15.06-104.259,5.261-164.711-14.993-25.273-8.468-91.053-63.352-112.638-15.503-19.232,42.634,17.63,84.58,63.306,64.34,54.075-23.961,102.529-4.758,157.618,10.994,30.451,8.707,104.469,19.277,70.263,47.34-23.042,18.904-82.531,7.721-124.304,1.747-76-10.869-194.574,114.173-188.448,24.354,4.116-60.352,110.159-23.933,150.917-58.398"
+            );
+          }
+
+          @media (any-hover: hover) {
+            &:hover {
+              animation-play-state: paused;
+
+              &::before {
+                opacity: 0;
+                animation-play-state: running, paused;
+              }
+
+              &::after {
+                opacity: 1;
+                animation:
+                  shake 0.1s linear infinite,
+                  flip 40s linear infinite;
+                animation-play-state: running, paused;
+              }
+            }
+          }
+
+          @media (any-hover: none) {
+            &:active {
+              animation-play-state: paused;
+
+              &::before {
+                opacity: 0;
+                animation-play-state: running, paused;
+              }
+
+              &::after {
+                opacity: 1;
+                animation:
+                  shake 0.1s linear infinite,
+                  flip 40s linear infinite;
+                animation-play-state: running, paused;
+              }
+            }
+          }
+        }
+
+        .ghost_panel {
+          position: absolute;
+          width: 100%;
+          height: calc(260px + 1rem + 8px);
+
+          .ghost_panel_checkbox {
+            margin-left: 6px;
+          }
+
+          .ghost_panel_label {
+            display: inline-block;
+            padding: 4px;
+            color: white;
+            font-size: 1rem;
+          }
+
+          .ghost_panel_path {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            visibility: hidden;
+
+            &::after {
+              width: 540px;
+              height: 260px;
+              content: "";
+              background-image: url("./images/ghost/ghost_path.svg");
+
+              @media (width <= 760px) {
+                width: 370px;
+                background-image: url("./images/ghost/ghost_path_sp.svg");
+              }
+            }
+          }
+
+          &:has(.ghost_panel_checkbox:checked) .ghost_panel_path {
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    @keyframes move {
+      to {
+        offset-distance: 100%;
+      }
+    }
+
+    @keyframes flip {
+      15% {
+        scale: 1 1;
+      }
+      16%,
+      40% {
+        scale: -1 1;
+      }
+      41%,
+      63% {
+        scale: 1 1;
+      }
+      64%,
+      87% {
+        scale: -1 1;
+      }
+      88% {
+        scale: 1 1;
+      }
+    }
+
+    @keyframes float {
+      from {
+        translate: 0 10%;
+      }
+      to {
+        translate: 0 -10%;
+      }
+    }
+
+    @keyframes shake {
+      0%,
+      100% {
+        translate: -4%;
+      }
+      50% {
+        translate: 5%;
+      }
+    }
+    </style>
+  </head>
+
+  <body>
+    <main class="contents">
+      <section class="demo">
+        <h1>
+          Flipping Ghost<br>
+          <span>左右に来た時にフリップするアニメーション</span>
+        </h1>
+        <p class="hoverHere">▼Hover the ghost / <span>おばけをホバー</span></p>
+        <div class="wrapper wrapper__ghost">
+          <div class="ghost">
+            <div class="ghost_panel">
+              <input
+                type="checkbox"
+                id="path-ghost"
+                class="ghost_panel_checkbox"
+              >
+              <label for="path-ghost" class="ghost_panel_label"
+                >Show path / <span>パスを表示</span></label
+              >
+              <span class="ghost_panel_path"></span>
+            </div>
+            <span class="ghost_image"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
