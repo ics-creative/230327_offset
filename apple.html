@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./styles/base.css">
     <style>
     .wrapper__hello {
+      /* はじめは加速し、終盤の減速を強める */
+      --hello-easing: cubic-bezier(0.32, 0.01, 0.27, 1);
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -29,7 +32,7 @@
         stroke-dasharray: 2400px;
         stroke-linecap: round;
         stroke-linejoin: round;
-        animation: hello 3.5s infinite linear;
+        animation: hello 3.5s var(--hello-easing) infinite;
       }
     }
 

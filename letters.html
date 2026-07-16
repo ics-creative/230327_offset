@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="./styles/base.css">
     <style>
     :root {
-      --custom-easing: cubic-bezier(0.34, 0.1, 0.85, 1.04);
+      /* custom subtle easeInOut */
+      --subtle-ease-in-out: cubic-bezier(0.25, 0, 0.75, 1);
     }
 
     .letters-button {
@@ -71,12 +72,12 @@
         &.is-active {
           .letters_pen {
             offset-distance: 100%;
-            transition: offset-distance 5.5s var(--custom-easing);
+            transition: offset-distance 5.5s var(--subtle-ease-in-out);
           }
 
           .letters-svg-mask {
             stroke-dashoffset: 0;
-            transition: stroke-dashoffset 5.5s var(--custom-easing);
+            transition: stroke-dashoffset 5.5s var(--subtle-ease-in-out);
           }
         }
       }
@@ -88,7 +89,7 @@
     <main class="contents">
       <section class="demo">
         <button type="button" class="letters-button" data-button-id="letters">
-          Play / <span>再生</span>
+          Play
         </button>
         <div class="wrapper wrapper__letters">
           <div class="letters" data-wrapper-id="letters">
@@ -147,7 +148,7 @@
 
       if (letters.classList.contains("is-active")) {
         letters.classList.remove("is-active");
-        button.textContent = "Play / 再生";
+        button.textContent = "Play";
         clearTimeout(timeoutId);
         return;
       }
@@ -156,7 +157,7 @@
       isPlaying = true;
       timeoutId = setTimeout(() => {
         isPlaying = false;
-        button.textContent = "Reset / リセット";
+        button.textContent = "Reset";
       }, 5500);
     });
     </script>
